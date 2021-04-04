@@ -1,0 +1,58 @@
+{
+    "name": "jgile/livewire-components",
+    "description": "livewire-components",
+    "keywords": [
+        "jgile",
+        "livewire-components"
+    ],
+    "homepage": "https://github.com/jgile/livewire-components",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Gile",
+            "email": "me@jgile.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "spatie/laravel-package-tools": "^1.1",
+        "illuminate/contracts": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.3",
+        "spatie/laravel-ray": "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "JGile\\LivewireComponents\\": "src",
+            "JGile\\LivewireComponents\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JGile\\LivewireComponents\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JGile\\LivewireComponents\\LivewireComponentsServiceProvider"
+            ],
+            "aliases": {
+                "LivewireComponents": "JGile\\LivewireComponents\\LivewireComponentsFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
