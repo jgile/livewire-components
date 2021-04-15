@@ -2,6 +2,8 @@
 
 namespace JGile\LivewireComponents;
 
+use JGile\LivewireComponents\Views\Components\Modal;
+use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -12,29 +14,22 @@ class LivewireComponentsServiceProvider extends PackageServiceProvider
         $package
             ->name('livewire-components')
             ->hasConfigFile()
-            ->hasViews();
+            ->hasViews()
+            ->hasViewComponents(config('livewire-components.prefix', ''), ...[
+                Modal::class
+            ]);
+
+        $this->registerLivewireComponents();
     }
 
-    public function bootingPackage()
+    public function registerLivewireComponents(): self
     {
-        $this->registerComponents([]);
-        $this->registerMacros();
-        $this->registerBladeDirectives();
+        if (!class_exists(Livewire::class)) {
+            return $this;
+        }
+
+//        Livewire::component('gallery', Gallery::class);
+
+        return $this;
     }
-
-    protected function registerBladeDirectives()
-    {
-
-    }
-
-    protected function registerMacros()
-    {
-
-    }
-
-    protected function registerComponents($components)
-    {
-
-    }
-
 }
